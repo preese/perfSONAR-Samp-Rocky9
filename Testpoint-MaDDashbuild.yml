@@ -4,19 +4,20 @@
   gather_facts: true
   become: yes
   tasks:
+    - name: rocky 9 prep
+      command: "dnf config-manager --set-enabled crb"
+
     - name: For maddash VM, add epel and ps Repo
       dnf:
         name:
           - epel-release
-          - http://software.internet2.edu/rpms/el8/x86_64/latest/packages/perfsonar-repo-0.11-1.noarch.rpm
+          - dnf install http://software.internet2.edu/rpms/el9/x86_64/latest/packages/perfsonar-repo-0.11-1.noarch.rpm
         state: latest   
-    - name: rocky 8 prep
-      command: "dnf config-manager --set-enabled powertools"
-
 
     - name: For maddash VM, add maddash and archive rpms to MaDDash Server
       dnf:
         name:          
+          - firewalld
           - perfsonar-archive
           - perfsonar-psconfig-publisher
           - maddash
@@ -104,9 +105,9 @@
           - epel-release
           - http://software.internet2.edu/rpms/el8/x86_64/latest/packages/perfsonar-repo-0.11-1.noarch.rpm
         state: latest
-    - name: rocky 8 prep
-      command: "dnf config-manager --set-enabled powertools"
 
+    - name: rocky 9 prep
+      command: "dnf config-manager --set-enabled crb"
 
     - name: Add perfsonar rpms to all testpoint edge nodes
       dnf:

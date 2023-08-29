@@ -12,7 +12,7 @@ nodes = [
 Vagrant.configure("2") do |config|
   nodes.each do |node|
     config.vm.define node[:hostname] do |node_config|
-      node_config.vm.box = "generic/rocky8"
+      node_config.vm.box = "generic/rocky9"
       node_config.vm.network :public_network, :mac => node[:mac], bridge: "enp0s20f0u2"
       node_config.vm.provision "file", source: "/home/vagrant/.ssh/id_ed25519.pub", destination: "/home/vagrant/.ssh/authorized_keys"
 
