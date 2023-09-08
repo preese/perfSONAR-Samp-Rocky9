@@ -1,4 +1,4 @@
-# perfSONAR-Sampler VERSION 5
+# Rocky9-perfSONAR-Sampler VERSION 5
 This project illustrates, using VMs, what the document [MaDDash Quick Install Guide v4](https://docs.google.com/document/d/1k7FT66MKPy3JjpD5k0OFAFlTpSdFmZ6huhTUDQ2rGGY/edit?usp=sharing) covers bit by bit.
 
 The project pulls together files to move from bare VMs to working perfSONAR Testpoint nodes and a MaDDash grid.  It doesn't show real network tests but just traffic between the different VMs on the single host.  The project files can later be reviewed and edited for use on real hardware for perfSONAR node configs and MaDDash server web setups.
