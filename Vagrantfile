@@ -2,10 +2,10 @@
 # vi: set ft=ruby :
 
 nodes = [
-  { :hostname => "md", :mac => "525400836f54", :ram => 4096 },
-  { :hostname => "ps1", :mac => "525400836f51", :ram => 2048 },
-  { :hostname => "ps2", :mac => "525400836f52", :ram => 2048 },
-  { :hostname => "ps3", :mac => "525400836f53", :ram => 2048 }
+  { :hostname => "vag-md", :mac => "525400836f54", :ram => 4096 },
+  { :hostname => "vag-ps1", :mac => "525400836f51", :ram => 2048 },
+  { :hostname => "vag-ps2", :mac => "525400836f52", :ram => 2048 },
+  { :hostname => "vag-ps3", :mac => "525400836f53", :ram => 2048 }
 
 ]
 
@@ -28,8 +28,8 @@ Vagrant.configure("2") do |config|
     ansible.compatibility_mode = "2.0"
     ansible.playbook = "Testpoint-MaDDashbuild.yml"
     ansible.groups = {
-      "testpoint" => ["ps1", "ps2", "ps3"],
-      "md-arch"   => ["md"]
+      "testpoint" => ["vag-ps1", "vag-ps2", "vag-ps3"],
+      "md-arch"   => ["vag-md"]
     }
   end
 end
