@@ -4,20 +4,28 @@
   gather_facts: true
   become: yes
   tasks:
-    - name: rocky 9 prep
-      command: "dnf config-manager --set-enabled crb"
-
     - name: For maddash VM, add epel and ps Repo
       dnf:
         name:
           - epel-release
-          - http://software.internet2.edu/rpms/el9/x86_64/latest/packages/perfsonar-repo-0.11-1.noarch.rpm
         state: latest   
+
+    - name: rocky 9 prep
+      command: "dnf config-manager --set-enabled crb"
+
+      - name: For maddash VM, PS Repo from I2
+        dnf:
+          name:
+            - http://software.internet2.edu/rpms/el9/x86_64/latest/packages/perfsonar-repo-0.11-1.noarch.rpm
+          disable_gpg_check: true
+          state: latest
+
+      - name: Do the dnf clean all!
+        command: "dnf clean all"
 
     - name: For maddash VM, add maddash and archive rpms to MaDDash Server
       dnf:
         name:          
-          - firewalld
           - perfsonar-archive
           - perfsonar-psconfig-publisher
           - maddash
@@ -29,16 +37,6 @@
         regexp: '^(\s*# Require ip 10\.1\.1\.0/24)$'
         line: 'Require ip 192.168.0.0/23'
         backrefs: yes
-
-    - name: Start FW service if not running
-      service:
-        name: firewalld
-        state: started
-
-    - name: Enable FW service
-      service:
-        name: firewalld
-        enabled: yes
 
     - name: Add http to firewall
       firewalld:
