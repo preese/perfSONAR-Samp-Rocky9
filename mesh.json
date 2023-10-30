@@ -8,7 +8,7 @@
            "archiver":"http",
            "data":{
               "schema":3,
-              "_url":"http://192.168.1.214/logstash",
+              "_url":"http://vag-md/logstash",
               "verify-ssl":false,
               "op":"put",
               "_headers":{
@@ -17,24 +17,24 @@
               }
             },
            "_meta": {
-              "esmond_url": "http://192.168.1.214/esmond/perfsonar/archive/"
+              "esmond_url": "http://vag-md/esmond/perfsonar/archive/"
            }
 
          }	   
      },
     "addresses": {
-        "ps1": { "address": "192.168.1.211" },
-        "ps2": { "address": "192.168.1.212" },
-        "ps3": { "address": "192.168.1.213" }
+        "vag-ps1": { "address": "192.168.1.211" },
+        "vag-ps2": { "address": "192.168.1.212" },
+        "vag-ps3": { "address": "192.168.1.213" }
     },
 
     "groups": {
         "Home_group_mesh": {
             "type": "mesh",
             "addresses": [
-                { "name": "ps1" },
-                { "name": "ps2" },
-                { "name": "ps3" }
+                { "name": "vag-ps1" },
+                { "name": "vag-ps2" },
+                { "name": "vag-ps3" }
             ]
          }
      },
